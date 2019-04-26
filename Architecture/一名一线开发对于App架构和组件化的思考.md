@@ -38,7 +38,9 @@
 
 经过分析梳理，我们很容易能够画出如下的应用架构图，图中每层都标出了该层大致包含哪些内容。
 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/Architecture/app-architecture.png)
 
+图中，我们按照“盖大楼”的思路，进一步抽象罗列出了一个App应该包含哪些结构。
 
 
 
