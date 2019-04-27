@@ -67,7 +67,7 @@
 >A：在回答之前，我们先思考两个问题。弹框组件未来变动可能性有多大？你设计的Api是否合理，是否能够满足未来产品的需求？第二个问题，解耦带来的益处能够cover住这些可能的变动带来的弊端？想清楚这两个问题，我们就知道设计一个组件是否需要做解耦，是否需要用中间服务去除依赖了。
 
 ## 解决横向依赖
-* 通用组件层的横向依赖。  
+* **通用组件层的横向依赖**。  
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/Architecture/app-service.png)  
 
@@ -75,14 +75,27 @@
 
 利用中间件的概念，我们可以在两个模块之间建立一个**服务层**，专门用来进行模块间的数据通信，或者非界面跳转的小粒度组件的数据通信。这样就很好的解决了两个组件的横向依赖问题。  
 
-* 业务模块间的横向依赖
+* **业务模块间的横向依赖。**  
+
+这里主要说的是那些业务功能独立、业务线之间的横向依赖。举例说明，首页模块可能带有业务A、业务B、业务C的入口，如果没有做组件化，则首页模块连同A、B、C业务都耦合在一起。这里推荐几个比较比较常用的路由解决方案。
+
+[JLRoutes-URL routing library for iOS with a simple block-based API。](https://github.com/joeldev/JLRoutes)
+
+[BeeHive-iOS的App模块化编程的框架实现方案，吸收了Spring框架Service的理念来实现模块间的API耦合。](https://github.com/alibaba/BeeHive)
+
+[CTMediator-基于Mediator模式和Target－Action模式。](https://github.com/casatwy/CTMediator)  
+>Q：我该如何设计一个路由，用于模块间的跳转？
+
+>A：设计路由需要遵循几个原则。  
+
+>第一，便于集成，最小的改动即可实现一个路由。  
+>第二，最大限度把参数正确性校验提前，能在编译时校验就不要在运行时校验。  
+>第三，尽可能的支持多种注册方式，静态注册、动态注册、服务配置等。  
+
+**未完待续**  
+**文章首发GitHub:[](https://github.com/Lobster-King/AppArticles)** 
 
 
-
-
-## 解决纵向依赖
-
-## 如何编写一个高内聚、低耦合、扩展性又高的组件
 
 
 
