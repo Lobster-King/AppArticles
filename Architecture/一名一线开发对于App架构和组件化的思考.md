@@ -95,7 +95,9 @@
 **下一篇我们将进行实操，跟大家一起一步步编写一个模块间通信的服务组件**  
 **文章首发GitHub:[](https://github.com/Lobster-King/AppArticles)** 
 
+架构和组件化系列文章预告：**从0到1实现一个模块间通信的服务组件**，会一步步跟大家一起编写一个模块间通信的服务组件。  
 
+**文章首发GitHub [https://github.com/Lobster-King/AppArticles](https://github.com/Lobster-King/AppArticles)**
 
 
 
