@@ -7,4 +7,4 @@
 
 [从0到1实现一个模块间通信的服务组件](https://github.com/Lobster-King/AppArticles/blob/master/Architecture/%E4%BB%8E0%E5%88%B01%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9D%97%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%BB%84%E4%BB%B6.md)  
 
-[说说MVVM](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/Architecture/%E8%AF%B4%E8%AF%B4MVVM.md)
+[说说MVVM](https://github.com/Lobster-King/AppArticles/blob/master/Architecture/%E8%AF%B4%E8%AF%B4MVVM.md)
