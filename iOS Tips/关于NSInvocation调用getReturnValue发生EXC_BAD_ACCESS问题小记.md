@@ -46,3 +46,7 @@ EXC____BAD____ACCESS错误我们知道是访问了野指针，我们一般可以
 * getReturnValue函数传入的是一个指针，它只是把传入的指针指向了返回值（NSString），也就是说没有Retain这个返回值（NSString）。  
 * 出了getReturnValue函数作用域，给NSString对象发送release不会报错，而出了invokeService:(NSString *)service withArgs:(va_list)arguments函数作用域，回收栈内存的时候依然给栈内存所指向的也就是NSString这个实例发送了release消息，导致过度释放！出现了野指针错误。
 * 程序依然能正常返回是因为NSString对象回收后，操作系统没有立即覆盖这个内存地址。
+
+## 解决方案
+
+利用__autoreleasing id returnValue = nil;即可解决此问题。这里相当于延长了returnValue所指向对象的释放时机。
