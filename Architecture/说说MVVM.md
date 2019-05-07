@@ -25,6 +25,8 @@ MVVM和PM都来自MVC模式。
 
 我简单的画了下MVVM的架构图。  
 
- 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/Architecture/mvvm-arch.png)   
+
+
 
 
