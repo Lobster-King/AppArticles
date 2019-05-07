@@ -13,5 +13,18 @@ MVVM和PM都来自MVC模式。
 
 >MVVM也被称为model-view-binder，特别是在不涉及.NET平台的实现中。ZK（Java写的一个Web应用框架）和KnockoutJS（一个JavaScript库）使用model-view-binder。  
 
-以上内容来自维基百科。[MVVM](https://zh.wikipedia.org/wiki/MVVM)。  
-简单的讲，
+以上内容来自维基百科。[MVVM wikipedia](https://zh.wikipedia.org/wiki/MVVM)。  
+
+简单的讲，MVVM是MVC的改进版。我们都知道MVC软件架构模式是苹果推荐的开发模式。**MVC**中的**M**就是单纯的从网络获取回来的数据模型，**V**指的我们的视图界面，而**C**就是我们的ViewController。在其中，ViewController负责View和Model之间调度，View发生交互事件会通过target-action或者delegate方式回调给Controller，与此同时Controller还要承担把Model通过KVO、Notification方式传来的数据传输给View用于展示的责任。___随着业务越来越复杂，视图交互越复杂，导致Controller越来越臃肿，负重前行。脏活累活都它干了，到头来还一点不讨好。福报修多了结果就是，不行了就重构你，重构不了就彻底把你换掉。___😅
+
+来一张斯坦福老头经典的MVC架构图。  
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/Architecture/mvc-arch.jpg)  
+
+所以为了解决这个问题，MVVM就闪亮登场了。他把View和Contrller都放在了View层（相当于把Controller一部分逻辑抽离了出来），Model层依然是服务端返回的数据模型。___而ViewModel充当了一个UI适配器的角色，也就是说View中每个UI元素都应该在ViewModel找到与之对应的属性。除次之外，从Contrller抽离出来的与UI有关的逻辑都在了ViewModel中，这样就减轻了Contrller的负担。___  
+
+我简单的画了下MVVM的架构图。  
+
+ 
+
+
