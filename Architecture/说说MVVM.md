@@ -21,7 +21,7 @@ MVVM和PM都来自MVC模式。
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/Architecture/mvc-arch.jpg)  
 
-所以为了解决这个问题，MVVM就闪亮登场了。他把View和Contrller都放在了View层（相当于把Controller一部分逻辑抽离了出来），Model层依然是服务端返回的数据模型。***而ViewModel充当了一个UI适配器的角色，也就是说View中每个UI元素都应该在ViewModel找到与之对应的属性。除此之外，从Contrller抽离出来的与UI有关的逻辑都放在了ViewModel中，这样就减轻了Contrller的负担。***  
+所以为了解决这个问题，MVVM就闪亮登场了。他把View和Contrller都放在了View层（相当于把Controller一部分逻辑抽离了出来），Model层依然是服务端返回的数据模型。***而ViewModel充当了一个UI适配器的角色，也就是说View中每个UI元素都应该在ViewModel找到与之对应的属性。除此之外，从Controller抽离出来的与UI有关的逻辑都放在了ViewModel中，这样就减轻了Controller的负担。***  
 
 我简单的画了下MVVM的架构图。  
 
