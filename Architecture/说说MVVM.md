@@ -15,7 +15,7 @@ MVVM和PM都来自MVC模式。
 
 以上内容来自维基百科。[MVVM wikipedia](https://zh.wikipedia.org/wiki/MVVM)。  
 
-简单的讲，MVVM是MVC的改进版。我们都知道MVC软件架构模式是苹果推荐的开发模式。**MVC**中的**M**就是单纯的从网络获取回来的数据模型，**V**指的我们的视图界面，而**C**就是我们的ViewController。在其中，ViewController负责View和Model之间调度，View发生交互事件会通过target-action或者delegate方式回调给Controller，与此同时Controller还要承担把Model通过KVO、Notification方式传来的数据传输给View用于展示的责任。***随着业务越来越复杂，视图交互越复杂，导致Controller越来越臃肿，负重前行。脏活累活都它干了，到头来还一点不讨好。福报修多了结果就是，不行了就重构你，重构不了就换掉你。***😅
+简单的讲，MVVM是MVC的改进版。我们都知道MVC软件架构模式是苹果推荐的开发模式。**MVC**中的**M**就是单纯的从网络获取回来的数据模型，**V**指的我们的视图界面，而**C**就是我们的ViewController。在其中，ViewController负责View和Model之间调度，View发生交互事件会通过target-action或者delegate方式回调给ViewController，与此同时ViewController还要承担把Model通过KVO、Notification方式传来的数据传输给View用于展示的责任。***随着业务越来越复杂，视图交互越复杂，导致Controller越来越臃肿，负重前行。脏活累活都它干了，到头来还一点不讨好。福报修多了结果就是，不行了就重构你，重构不了就换掉你。***😅
 
 来一张斯坦福老头经典的MVC架构图。  
 
@@ -38,6 +38,14 @@ MVVM和PM都来自MVC模式。
 
 
 ## MVVM结合RAC
+
+通过MVVM扫盲部分，我们了解到，Binder在MVVM中扮演了View和ViewModel数据通信者的角色。在Android有个好东西，那就是**注解**，他可以在XML中通过标记的方式告诉编译器与ViewModel的绑定关系，编译器在编译过程中自动生成XML和ViewModel的绑定类（Binder）。注解功能很强大，但是不幸的是，我们iOS没有！！！
+  
+[ReativeCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)相信大家并不陌生，这个函数响应式框架在Github中已经有将近2w star 。RAC是个非常优秀的框架，它可以独立于MVVM而存在。如果只是把它理解成MVVM中View和ViewModel Binder角色的话，那就有点大材小用了。本文不会对RAC进行展开分析，感兴趣的可以自行实践一下。本文会以登录模块举例子，简单介绍下MVVM+RAC的实现Demo。  
+
+
+
+
 
 ## MVVM结合非RAC
 
