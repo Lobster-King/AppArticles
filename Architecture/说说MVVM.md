@@ -31,11 +31,29 @@ MVVM和PM都来自MVC模式。
 
 * **View层**：视图展示。包含UIView以及UIViewController，View层是可以持有ViewModel的。
 * **ViewModel层**：视图适配器。暴露属性与View元素显示内容或者元素状态一一对应。一般情况下ViewModel暴露的属性建议是readOnly的，至于为什么，我们在实战中会去解释。还有一点，ViewModel层是可以持有Model的。
-* **Model层**：数据模型与持久化抽象模型。数据模型很好理解，就是从服务器拉回来的JSON数据。而持久化抽象模型暂时放在Model层，是因为MVVM诞生之初就没有对这块进行很细致的描述。按照经验，我们通常把数据库、文件操作封装成Model，并对外提供操作接口。（有些公司把数据存取操作单拎出来一层，称之为**DataAdapter层**，所以在业内会有很多MVVM的变种，但其本质上都是MVVM。比较典型的就是猿题库的架构实践方案--->[猿题库iOS客户端架构设计](http://www.cocoachina.com/ios/20160108/14911.html)，它把数据存取和网络请求单拉出来形成DataContrller层，但从严格意义上来讲，猿题库的架构方案不算是MVVM的架构模式）。
+* **Model层**：数据模型与持久化抽象模型。数据模型很好理解，就是从服务器拉回来的JSON数据。而持久化抽象模型暂时放在Model层，是因为MVVM诞生之初就没有对这块进行很细致的描述。按照经验，我们通常把数据库、文件操作封装成Model，并对外提供操作接口。（有些公司把数据存取操作单拎出来一层，称之为**DataAdapter层**，所以在业内会有很多MVVM的变种，但其本质上都是MVVM）。
 * **Binder**：MVVM的灵魂。可惜在MVVM这几个英文单词中并没有它的一席之地，它的最主要作用是在View和ViewModel之间做了双向数据绑定。如果MVVM没有Binder，那它与MVC无异。
 
 我们发现，正是因为View、ViewModel以及Model间的清晰的持有关系，所以在三个模块间的数据流转有了很好的控制。
 
+
+**这里给推荐一篇博文[猿题库iOS客户端架构设计](http://www.cocoachina.com/ios/20160108/14911.html)，其架构图如下**  
+
+
+
+博文中对于MVC和MVVM的优缺点做了简单的介绍。  
+
+* MVC缺点：Massive View Controller，也就是胖VC。
+* MVVM缺点：1.学习成本高。2.DEBUG困难。
+
+但博文中关于MVVM的阐述有两处笔者不太赞同。  
+
+* MVVM绝不等于RAC，所以MVVM的缺点并不存在DEBUG难的问题。  
+* MVVM正是因为跟RAC不对等，所以博文说“MVVM一个首要的缺点是，MVVM 的学习成本和开发成本都很高”也是不成立的。  
+
+MVVM架构本身并不复杂，而且不用RAC我们依然可以通过KVO、类KVO的方式来帮我们实现绑定器功能。  
+
+关于猿题库iOS客户端架构设计是否合理，因为笔者不了解其具体业务，所以不能妄下结论。
 
 ## MVVM结合RAC
 
