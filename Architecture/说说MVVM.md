@@ -36,7 +36,7 @@ MVVM和PM都来自MVC模式。
 * **View层**：视图展示。包含UIView以及UIViewController，View层是可以持有ViewModel的。
 * **ViewModel层**：视图适配器。暴露属性与View元素显示内容或者元素状态一一对应。一般情况下ViewModel暴露的属性建议是readOnly的，至于为什么，我们在实战中会去解释。还有一点，ViewModel层是可以持有Model的。
 * **Model层**：数据模型与持久化抽象模型。数据模型很好理解，就是从服务器拉回来的JSON数据。而持久化抽象模型暂时放在Model层，是因为MVVM诞生之初就没有对这块进行很细致的描述。按照经验，我们通常把数据库、文件操作封装成Model，并对外提供操作接口。（有些公司把数据存取操作单拎出来一层，称之为**DataAdapter层**，所以在业内会有很多MVVM的变种，但其本质上都是MVVM）。
-* **Binder**：MVVM的灵魂。可惜在MVVM这几个英文单词中并没有它的一席之地，它的最主要作用是在View和ViewModel之间做了双向数据绑定。如果MVVM没有Binder，那它与MVC无异。
+* **Binder**：MVVM的灵魂。可惜在MVVM这几个英文单词中并没有它的一席之地，它的最主要作用是在View和ViewModel之间做了双向数据绑定。如果MVVM没有Binder，那么它与MVC的差异不是很大。
 
 我们发现，正是因为View、ViewModel以及Model间的清晰的持有关系，所以在三个模块间的数据流转有了很好的控制。
 
@@ -63,6 +63,8 @@ MVVM架构本身并不复杂，而且不用RAC我们依然可以通过KVO、类K
 >Q：View和ViewModel之间是否一定要解耦？  
 >A：View持有ViewModel，ViewModel不能持有View（即ViewModel不能依赖UIKit中任何东西）。说明白了吧？😅  解耦是有一定成本的，不管是通过Category或者中间件，消息链条都会无形之中变长，会有一定的DEBUG成本。  
 >
+>Q：为什么ViewModel不能持有View？  
+>A：这个很好理解啊兄dei，主要有两方面原因：1.ViewModel可测性，即单元测试方便进行。2.团队人员可分离开发（View和ViewModel开发可以是两个人同时进行）。  
 
 ## MVVM结合RAC
   
@@ -76,19 +78,14 @@ RAC特点：
 
 **总结：RAC是一种编程思维的改变，所以其缺点很明显，学习成本很大！！！**  
 
-下面以登录模块举例子，简单介绍下MVVM+RAC的实现Demo。 
-
-
-
-
-
+具体RAC的使用，可以参考官方文档，自行实践一下，这里不再展开。
 
 
 ## MVVM结合非RAC（[IQDataBinding](https://github.com/Lobster-King/IQDataBinding)）
 
 通过MVVM扫盲部分，我们了解到，Binder在MVVM中扮演了View和ViewModel数据通信者的角色。
 
-了解过Android开发的同学都知道，Java有个好东西，那就是**注解（Annotation）**。在开发Android App的时候，可以在XML中通过标记的方式告诉编译器与ViewModel的绑定关系。编译器在编译过程中，会自动生成XML和ViewModel的绑定类（Binder）。
+了解过Android开发的同学都知道，Java有个好东西，那就是**注解（Annotation）**。在开发Android App的时候，可以在XML中通过注解的方式标记View和ViewModel的绑定关系。编译器在编译过程中，会自动生成XML和ViewModel的绑定类（Binder）。
 
 注解功能很强大，但是不幸的是，我们iOS（Objective-C）没有！！！Swift有没有注解笔者不太清楚，有知道的童鞋可以告诉我一下。  
 
@@ -101,7 +98,7 @@ RAC特点：
 
 1.ViewModel >>> View：View不需要关心ViewModel属性的改变，View只需要提供更新视图的接口即可，ViewModel属性改变之后调用View提供的API更新视图。所以View这里没有做过多的事情，一切都是被动触发，所以我称作是“躺爽法”。  
 
-2.View >>> ViewModel：用户操作视图，比如一个开关按钮，这时候要同步给ViewModel。我们知道View是可以持有ViewModel的，所以在View中我们可以直接拿到ViewModel指针，进而通过ViewModel暴露的更新方法而更新值。  
+2.View >>> ViewModel：用户操作视图，比如一个开关按钮，这时候要同步给ViewModel。我们知道View是可以持有ViewModel的，所以在View中我们可以直接拿到ViewModel指针，进而通过ViewModel暴露的方法而更新值。  
 
 >高能预警：这种最基础的方法，实际上是MVC！！！他本身没有解决**“Massive View Controller”**问题。也就是说为了ViewModel中不依赖于View，必须通过Controller中转，依然会有一堆胶水代码。**所以这种解决方案并不是MVVM！！！**不是故意给大家挖坑，只是意在提醒大家，阅读文章的时候要举一反三，更不要被一些脏乱差的文章混淆视听😅😅😅。  
 
@@ -356,9 +353,74 @@ NS_ASSUME_NONNULL_END
 
 **如何自动移除KVO？**  
 
-这个问题就比较简单了，为了监控View的Dealloc函数调用时机，我们可以通过Hook的方式，但是Hook不太推荐。尤其使用类似于Aspects（通过消息转发来实现，代价很高）进行Hook时，对于那种一秒钟调用超过1000次的业务场景会严重影响性能。所以我才用的方案是，通过给View添加一个关联对象来解决。因为我们知道对象释放时会先释放成员变量，然后再释放关联对象，所以我们可以在关联对象的dealloc方法里对观察者进行自动移除。  
+这个问题就比较简单了，为了监控View的dealloc函数调用时机，我们可以通过Hook的方式，但是Hook不太推荐。尤其使用类似于Aspects（通过消息转发来实现，代价很高）进行Hook时，对于那种一秒钟调用超过1000次的业务场景会严重影响性能。所以我采用的方案是，通过给View添加一个关联对象来解决。因为我们知道对象释放时会先释放成员变量，然后再释放关联对象，所以我们可以在关联对象的dealloc方法里对观察者进行自动移除。  
 
-回忆下对象的释放过程  
+```
+ /*给view添加一个关联对象IQWatchDog，IQWatchDog职责如下
+     1.存储@{绑定的Key，回调Block}对应关系。
+     2.根据@{绑定的Key，回调Block}中的Key，进行KVO监听。
+     3.监听view Dealloc事件，自动移除KVO监听。
+     */
+    IQWatchDog *viewAssociatedModel = objc_getAssociatedObject(self, &kViewAssociatedModelKey);
+    if (!viewAssociatedModel) {
+        viewAssociatedModel = [[IQWatchDog alloc]init];
+        viewAssociatedModel.target = model;
+        objc_setAssociatedObject(self, &kViewAssociatedModelKey, viewAssociatedModel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+```
+```
+@interface IQWatchDog : NSObject
+
+@property (nonatomic, weak) id target;
+@property (nonatomic, strong) NSMutableDictionary *keyPathsAndCallBacks;
+
+@end
+
+@implementation IQWatchDog
+
+- (void)dealloc {
+    [self.keyPathsAndCallBacks enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [self.target removeObserver:self forKeyPath:key];
+    }];
+}
+
+- (void)observeKeyPath:(NSString *)keyPath callBack:(observerCallBack)callBack {
+    NSAssert(keyPath.length, @"keyPath不合法");
+    /*加载默认值*/
+    id value = [self.target valueForKeyPath:keyPath];
+    if (value) {
+        callBack(value);
+    }
+    /*添加观察者*/
+    [self.keyPathsAndCallBacks setObject:callBack forKey:keyPath];
+    [self.target addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    observerCallBack callBack = self.keyPathsAndCallBacks[keyPath];
+    if (callBack) {
+        callBack(change[NSKeyValueChangeNewKey]);
+    }
+}
+
+- (void)removeAllObservers {
+    [self.keyPathsAndCallBacks enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [self.target removeObserver:self forKeyPath:key];
+    }];
+}
+
+- (NSMutableDictionary *)keyPathsAndCallBacks {
+    if (!_keyPathsAndCallBacks) {
+        _keyPathsAndCallBacks = [NSMutableDictionary dictionary];
+    }
+    return _keyPathsAndCallBacks;
+}
+
+@end
+
+```
+
+**再回忆下对象的释放过程**  
 
 ```
 /*对象在释放时，最终都会走到这个函数*/
@@ -379,12 +441,16 @@ void *objc_destructInstance(id obj)
 }
 ```
 
-**GitHub地址：[IQDataBinding，一个View和ViewModel双向绑定的框架](https://github.com/Lobster-King/IQDataBinding)**
+**GitHub地址：[IQDataBinding，一个View和ViewModel双向绑定的框架](https://github.com/Lobster-King/IQDataBinding)**  
+
+**除此之外，再推荐一个比较好用的框架：[KVOController](https://github.com/facebook/KVOController)**  Simple, modern, thread-safe key-value observing for iOS and OS X.
 
 ## 对于开发者的建议
 
-对于团队成员不是很多，项目又比较新的团队来说，我建议大家勇于尝试MVVM架构。  
-而对于团队成员众多，项目遗留问题多的团队来说，我建议大家尝试MVVM+KVO+数据存取放到Model层的架构方案。其次，建议大家先尝试下猿题库的架构模式。猿题库的架构模式上手比较简单，但是Controller中也承担了View和ViewModel之间交互的职责，而且架构执行过程中也极易越写越偏，有可能可能最中写的代码是个四不像的代码实现。  
+* 不管是新、老团队，还是新、老项目，我都强烈建议大家尝试MVVM架构，再次强调的是：**MVVM ≠ RAC**。  
+* 对于团队成员众多，项目遗留问题多的团队来说，我建议大家尝试MVVM+KVO+数据存取放到Model层的架构方案。
+* 不可否认的是，RAC是个特别优秀的框架，但是落地比较难，尤其在中国。 
+* 不管哪种架构方式，执行落地都不是一件容易的事情。对于MVVM，我建议采用分步走的策略，即新功能用MVVM开发，老旧代码分步重构。而且要引入一些手段对代码进行静态检查，然后一步步把MVVM落到实处。再推荐点干货[使用 OCLint 自定义 MVVM 规则](http://yulingtianxia.com/blog/2019/01/27/MVVM-Rules-for-OCLint/)。
 
 **文章首发GitHub [https://github.com/Lobster-King/AppArticles](https://github.com/Lobster-King/AppArticles)**
 
