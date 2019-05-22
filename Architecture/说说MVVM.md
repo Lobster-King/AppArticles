@@ -45,7 +45,7 @@ MVVM和PM都来自MVC模式。
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/Architecture/%E7%8C%BF%E9%A2%98%E5%BA%93Arch.png)  
 
-博文中对于MVC和MVVM的优缺点做了简单的介绍。  
+猿题库的架构本质上不是MVC也不是MVVM，它是两种架构演进的一种架构模式。博文中对于MVC和MVVM的优缺点做了简单的介绍。  
 
 * MVC缺点：Massive View Controller，也就是胖VC。
 * MVVM缺点：1.学习成本高。2.DEBUG困难。
@@ -92,7 +92,198 @@ RAC特点：
 
 了解过Android开发的同学都知道，Java有个好东西，那就是**注解（Annotation）**。在开发Android App的时候，可以在XML中通过标记的方式告诉编译器与ViewModel的绑定关系。编译器在编译过程中，会自动生成XML和ViewModel的绑定类（Binder）。
 
-注解功能很强大，但是不幸的是，我们iOS（Objective-C）没有！！！Swift有没有注解笔者不太清楚，有知道的童鞋可以告诉我一下。
+注解功能很强大，但是不幸的是，我们iOS（Objective-C）没有！！！Swift有没有注解笔者不太清楚，有知道的童鞋可以告诉我一下。  
+
+接下来我们将一步步实现一个View和ViewModel双向绑定的框架。  
+
+
+**方案一：“躺爽法”**
+
+>名次解释：所谓“躺爽法”（实在想不出用什么词描述这种最基础的方法了😅）和KVO，是相对于ViewModel >>> View而言的。
+
+1.ViewModel >>> View：View不需要关心ViewModel属性的改变，View只需要提供更新视图的接口即可，ViewModel属性改变之后调用View提供的API更新视图。所以View这里没有做过多的事情，一切都是被动触发，所以我称作是“躺爽法”。  
+
+2.View >>> ViewModel：用户操作视图，比如一个开关按钮，这时候要同步给ViewModel。我们知道View是可以持有ViewModel的，所以在View中我们可以直接拿到ViewModel指针，进而通过ViewModel暴露的更新方法而更新值。  
+
+>高能预警：这种最基础的方法，实际上是MVC！！！他本身没有解决**“Massive View Controller”**问题。也就是说为了ViewModel中不依赖于View，必须通过Controller中转，依然会有一堆胶水代码。**所以这种解决方案并不是MVVM！！！**不是故意给大家挖坑，只是意在提醒大家，阅读文章的时候要举一反三，更不要被一些脏乱差的文章混淆视听😅😅😅。  
+
+
+**方案一：KVO**  
+
+1.ViewModel >>> View：ViewModel属性改变之后，通知View进行视图布局。这种最熟悉不过，通过KVO即可实现。  
+
+2.View >>> ViewModel：用户操作视图，通过ViewModel暴露的更新方法而更新值（设置属性值时要避开触发KVO监听，否则会出现死循环）。  
+
+**Talk is cheap,show me the code!**  
+我们以大家最熟悉的Cell举例子。  
+**ViewModel**
+
+```
+//
+//  IQMVVMDemoViewModel.h
+//
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface IQMVVMDemoViewModel : NSObject
+
+@property (nonatomic, copy, readonly) NSString *userName;
+@property (nonatomic, copy, readonly) NSString *userPwd;
+
++ (IQMVVMDemoViewModel *)demoViewWithName:(NSString *)userName withPwd:(NSString *)userPwd;
+- (void)updateViewModelWithName:(NSString *)userName withPwd:(NSString *)userPwd;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+```
+
+```
+//
+//  IQMVVMDemoViewModel.m
+//  
+
+#import "IQMVVMDemoViewModel.h"
+
+@interface IQMVVMDemoViewModel ()
+
+@property (nonatomic, copy, readwrite) NSString *userName;
+@property (nonatomic, copy, readwrite) NSString *userPwd;
+
+@end
+
+@implementation IQMVVMDemoViewModel
+
++ (IQMVVMDemoViewModel *)demoViewWithName:(NSString *)userName withPwd:(NSString *)userPwd {
+    IQMVVMDemoViewModel *viewModel = [[IQMVVMDemoViewModel alloc]init];
+    viewModel.userName  = userName;
+    viewModel.userPwd   = userPwd;
+    return viewModel;
+}
+
+- (void)updateViewModelWithName:(NSString *)userName withPwd:(NSString *)userPwd {
+    _userName   = userName;
+    _userPwd    = userPwd;
+}
+
+@end
+```
+
+**View**
+
+```
+//
+//  IQMVVMDemoView.h
+//  
+#import <UIKit/UIKit.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@class IQMVVMDemoViewModel;
+
+@interface IQMVVMDemoView : UITableViewCell
+
+- (void)updateViewWithViewModel:(IQMVVMDemoViewModel *)viewModel;
+
+@end
+
+NS_ASSUME_NONNULL_END
+```
+
+```
+//
+//  IQMVVMDemoView.m
+//  
+
+#import "IQMVVMDemoView.h"
+#import "IQMVVMDemoViewModel.h"
+
+@interface IQMVVMDemoView ()<UITextFieldDelegate>
+
+@property (nonatomic, strong) UITextField *userNameField;
+@property (nonatomic, strong) UITextField *userPwdField;
+@property (nonatomic, strong) IQMVVMDemoViewModel *viewModel;
+
+@end
+
+@implementation IQMVVMDemoView
+
+#pragma mark--Life Cycle--
+- (void)dealloc {
+    [self.viewModel removeObserver:self forKeyPath:@"userName"];
+    [self.viewModel removeObserver:self forKeyPath:@"userPwd"];
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setupSubviews];
+    }
+    return self;
+}
+
+#pragma Public & Private Methods--
+- (void)setupSubviews {
+    [self.contentView addSubview:self.userNameField];
+    [self.contentView addSubview:self.userPwdField];
+    /*
+     这里做布局，不写了啊
+     */
+}
+
+- (void)updateViewWithViewModel:(IQMVVMDemoViewModel *)viewModel {
+    self.viewModel = viewModel;
+    [self.viewModel addObserver:self forKeyPath:@"userName" options:NSKeyValueObservingOptionNew context:NULL];
+    [self.viewModel addObserver:self forKeyPath:@"userPwd" options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+#pragma mark--Delegates & KVO--
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"userName"]) {
+        self.userNameField.text = change[NSKeyValueChangeNewKey];
+    } else if([keyPath isEqualToString:@"userPwd"]) {
+        self.userPwdField.text = change[NSKeyValueChangeNewKey];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    /*更新ViewModel*/
+    if (textField == self.userNameField) {
+        self.userNameField.text = textField.text;
+    } else {
+        self.userPwdField.text = textField.text;
+    }
+    [self.viewModel updateViewModelWithName:self.userNameField.text withPwd:self.userPwdField.text];
+}
+
+#pragma mark--Getters & Setters--
+- (UITextField *)userNameField {
+    if (!_userNameField) {
+        _userNameField = [[UITextField alloc]init];
+        _userNameField.delegate = self;
+    }
+    return _userNameField;
+}
+
+- (UITextField *)userPwdField {
+    if (!_userPwdField) {
+        _userPwdField = [[UITextField alloc]init];
+        _userPwdField.delegate = self;
+    }
+    return _userPwdField;
+}
+
+
+@end
+
+```
+
+
+
+**方案二：类KVO**
+
+
 
 ## 对于开发者的建议
 
