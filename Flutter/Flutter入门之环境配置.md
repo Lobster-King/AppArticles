@@ -5,6 +5,7 @@
 * **操作系统**：macOS（64位）
 * **硬盘容量要求**：700MB（不包括IDE）
 * **工具集**：Flutter需要安装如下命令行工具  
+
 	bash  
 	curl  
 	git 2.x  
@@ -28,16 +29,16 @@
 ```  
 注意上面的命令，只是在当前命令行窗口有效，如果你想在每个终端窗口都能够运行flutter命令，则还需要额外的配置。  
 
-* 打开或者创建一个$HOME/.bash_profile。加上下面一行
+* 打开或者创建一个**$HOME/.bash_profile**。加上下面一行
 ```
  export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"
 ```  
-* 运行source $HOME/.bash_profile刷新窗口。
-* 通过输入echo $PATH命令来校验设置是否正确。
+* 运行**source $HOME/.bash_profile**刷新窗口。
+* 通过输入**echo $PATH**命令来校验设置是否正确。
 
->可以通过source ~/.bash_profile命令来检查环境变量设置是否正确。  
+>可以通过**source ~/.bash_profile**命令来检查环境变量设置是否正确。  
 >unexpected EOF while looking for matching `"'报错是因为我在变量路径少了一个双引号。  
->正确的设置应该是这样的：export PATH="$PATH:~/Documents/flutter/bin"
+>正确的设置应该是这样的：**export PATH="$PATH:~/Documents/flutter/bin"**
 
 ## 通过doctor命令来检查flutter环境配置
 
@@ -133,4 +134,30 @@ Run "flutter doctor" for information about installing additional components.
 
 ### 部署到真机设备
 要部署到真机设备上，需要安装一些依赖工具，还有一个苹果开发者账号。  
-1.安装Homebrew。
+1.安装Homebrew。  
+2.确保Homebrew是最新版本。  
+
+```
+brew update
+```
+
+3.安装以下命令行工具。
+
+```
+brew install --HEAD usbmuxd 
+/*
+执行这句可能报权限错误，Error: The following directories are not writable by your user:
+/usr/local/share/man/man8
+加入这句即可解决sudo chown -R `whoami`:admin /usr/local/share
+*/
+
+brew link usbmuxd
+brew install --HEAD libimobiledevice
+brew install ideviceinstaller ios-deploy cocoapods
+pod setup
+```
+4.配置签名信息。
+
+* 打开创建的示例工程my_app，打开ios/Runner.xcworkspace。
+* 在Xcode中选择Runner target。
+* 选择签名证书。
