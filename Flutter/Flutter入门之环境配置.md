@@ -161,3 +161,12 @@ pod setup
 * 打开创建的示例工程my_app，打开ios/Runner.xcworkspace。
 * 在Xcode中选择Runner target。
 * 选择签名证书。
+
+## IDE开发工具
+
+* Android Studio
+* IntelliJ IDEA（强烈推荐，感觉是最好用的IDE，没有之一）
+
+1.下载IntelliJ IDEA。[https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)  
+2.注册激活Idea。[http://idea.lanyus.com/](http://idea.lanyus.com/)  
+3.安装Flutter插件。
