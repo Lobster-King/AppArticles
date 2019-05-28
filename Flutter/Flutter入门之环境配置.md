@@ -169,4 +169,6 @@ pod setup
 
 1.下载IntelliJ IDEA。[https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)  
 2.注册激活Idea。[http://idea.lanyus.com/](http://idea.lanyus.com/)  
-3.安装Flutter插件。
+3.安装Flutter插件。  
+
+
