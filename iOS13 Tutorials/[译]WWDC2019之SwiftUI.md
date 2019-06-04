@@ -1,5 +1,7 @@
 ### SwiftUI基础教程
 
+> **SwiftUI只支持Xcode 11、iOS 13版本及以上。**
+
 官方文档链接：[https://developer.apple.com/tutorials/swiftui/creating-and-combining-views](https://developer.apple.com/tutorials/swiftui/creating-and-combining-views)
 
 ## 创建组合视图
