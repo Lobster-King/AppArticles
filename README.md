@@ -10,7 +10,7 @@
 博文翻译 | 未完待续 |
 iOS开发Tips | 未完待续 |
 Flutter | 未完待续 |
-iOS 13 Tutorials | [1.【译】WWDC2019之SwiftUI](https://github.com/Lobster-King/AppArticles/blob/master/iOS%2013%20Tutorials/%E3%80%90%E8%AF%91%E3%80%91WWDC2019%E4%B9%8BSwiftUI.md。) |
+iOS 13 Tutorials | [1.【译】WWDC2019之SwiftUI。](https://github.com/Lobster-King/AppArticles/blob/master/WWDC%202019%20Tutorials/%E3%80%90%E8%AF%91%E3%80%91WWDC2019%E4%B9%8BSwiftUI.md) |
 
 
 ## Have a problem?
