@@ -5,14 +5,23 @@
 
 进入正题，第一篇分享的是Xcode 11.0新特性。  
 
-### What's new in Xcode 11(Xcode 11新特性)
+### Xcode 11新特性
 
 Xcode 11主要包含如下新特性：
 
-* Xcode工作区更新
-* 
+* **Xcode工作流更新。**
+* **Swift包管理工具（Xcode终于有了自己的包管理工具了😅）。**
+* **Source Control代码管理模块更新。**
+* **StoryBoard设计工具。**
+* **Debug工具更新。**
+* **Testing模块更新。**
+* **Instruments性能分析工具。**
+* **全新的UI框架SwiftUI。**
 
-#### Xcode工作区
+下面分别介绍这些新特性。
+
+#### Xcode工作流更新
+
 
 
 
