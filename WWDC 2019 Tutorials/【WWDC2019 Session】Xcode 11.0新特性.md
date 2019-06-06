@@ -176,4 +176,10 @@ Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols 
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/debugging.png)
 
+**网络模拟测试**
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/realdevice.png)
+
+之前真机网络测试只能在手机上操作，现在可以直接在**Xcode->Devices & Simulators中进行测试**。
+
 
