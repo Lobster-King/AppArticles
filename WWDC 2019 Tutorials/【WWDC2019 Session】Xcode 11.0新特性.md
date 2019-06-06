@@ -64,7 +64,13 @@ Xcode 11主要包含如下新特性：
 
 Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧尝试了一下SPM。
 
-**Xcode 11打开工程，点击project**  
+**SPM入口**
 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/spmentrance.png)  
 
+用Xcode 11打开工程，点击Project，在Info、Build Setting后面多了一个Swift Packages，这就是SPM入口。
+
+点击+号，Xcode会提示你绑定一个账号： **BitBucket、GitHub、GitLab**
+
+笔者绑定的是GitHub账号，Xcode会自动列出该账号所属的
 
