@@ -193,9 +193,21 @@ Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols 
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/testing.png)
 
-**Reusable across schemes**
-**Define what tests to include**
-**Specify multiple configurations**
+* **Reusable across schemes：通过配置不同的schemes来实现复用。**
+* **Define what tests to include：自定义测试所包含内容。**
+* **Specify multiple configurations：支持多种配置来进行白盒测试。**
+* **支持iPad App for mac以及SwiftUI的测试。**
+
+
+Testing加入了Test Server的模块，用来把测试用例一次性运行在不同的平台上（iPhone、iPad、Mac App）。
+
+**总结：一次编写+一次配置=多端可测。Testing的相关更新，笔者尚未具体实践，有兴趣的筒子可以去体验一把，貌似国内基于TDD开发模式的团队少之又少吧。。。**
 
 #### 七、Simulator更新
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/simulator.png)
+
+
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/simulatorperformance.png)
 
