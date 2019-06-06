@@ -106,9 +106,34 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/sourcecontrol.png)
 
-在Xcode 10以前，Xcode Git GUI工具不支持stash、cherry-pick命令，在Xcode 11中加入了这两项功能。
+相信大多数的iOS开发者很少使用Xcode自带的Git GUI工具（实在太鸡肋，功能少的可怜），一般用Source Tree或者Command Line居多。而且在Xcode 10以前，Xcode Git GUI工具不支持stash、cherry-pick命令，在Xcode 11中加入了这两项功能。
+
+在Source Control下拉菜单中加入了Cherry-Pick、Stash Changes选项。
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/stashcherry-pick.png)
+
+**Stash Changes**
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/stashcomment.png)
+
+选择Stash Changes选项，会自动弹出一个对话框，提示我们输入一些Comment信息。点击Stash按钮自动跳转到Git管理Tab下。
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/stashinfo.png)
+
+在Git Tab页面，会展示出当前本地Branches列表、Stash Changes列表、Tags列表、Remotes远程仓库列表。
+
+在Stash右下角会有Stash功能选择按钮（也可以在左侧右键弹出）。
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/stashoption.png)
+
+简要说下三个选项：
+
+* **Apply Stashed Changes**：跟git stash apply作用一样，会把当前Stash Changes栈顶元素应用到当前分支，Stash Changes栈不会移除这个Stash。
+* **Export Stashed Changes as Patch File**：将某个Stash Changes导出一个Patch文件。
+* **Delete**：跟git stash pop作用一样，将Stash Changes栈顶元素应用到当前分支，Stash Changes栈会移除这个Stash。
+
+
+**Cherry-Pick**
 
 
 
