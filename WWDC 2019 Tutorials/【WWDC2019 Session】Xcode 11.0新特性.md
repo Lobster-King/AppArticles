@@ -207,7 +207,25 @@ Testing加入了Test Server的模块，用来把测试用例一次性运行在�
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/simulator.png)
 
+**Watch App模拟器更独立，可以单独运行**
 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/watch.png)
+
+**利用Metal重构Simulator，且Metal程序可以直接在模拟器中运行**
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/simulatorperformance.png)
+
+官方给出的Simulator性能数据：
+
+* 模拟器FPS达到60帧每秒。
+* CPU占用率减少至少90%。
+* 热启动至少提速2倍以上。
+
+**总结：Watch Simulator独立出来，可以预见Apple对于可穿戴设备的重视程度，除此之外Apple Wacth还会有自己独立的Watch App Store。另外Simulator利用Metal重构，其在性能上的表现确实让人眼前一亮。是不是要开始Metal框架的学习了呢？**
+
+#### 八、Instruments性能分析工具
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/instruments.png)
+
+* ****
 
