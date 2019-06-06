@@ -139,5 +139,13 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 ![](https://github.com/Lobster-King/AppArticles/raw/master/WWDC%202019%20Tutorials/cherry-pick.png)
 
+选择某个commit，然后cherry-pick，弹出框点击cherry-pick就会信生成一个将该commit合并到master分支，并新生成一个commit。
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/cherry-pickoption.png)
+
+**总结：Xcode Git GUI工具虽然加入了Stash、Cherry-pick功能，但对于一些业务场景远远不够，但对于基本的开发来讲已经够用了。**
+
+#### 四、StoryBoard设计工具
+
 
 
