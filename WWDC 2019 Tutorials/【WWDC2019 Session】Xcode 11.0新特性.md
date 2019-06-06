@@ -22,6 +22,19 @@ Xcode 11主要包含如下新特性：
 
 #### Xcode工作流更新
 
+**一、Xcode右上导航变化。**
+
+先来看下Xcode 10右上导航的样子  
+
+![](https://github.com/Lobster-King/AppArticles/raw/master/WWDC%202019%20Tutorials/xcode10navi.png)
+
+再看下Xcode 11导航变化  
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/xcode11navi.png)
+
+主要的变更如下：
+
+* Library（代码块Snippets和图片资源预览），由花括号改成了“+”号，并且在弹框中加入了
 
 
 
