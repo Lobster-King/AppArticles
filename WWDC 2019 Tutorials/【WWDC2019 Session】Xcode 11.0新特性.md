@@ -17,6 +17,7 @@ Xcode 11主要包含如下新特性：
 * **设计工具。**
 * **Debug工具更新。**
 * **Testing模块更新。**
+* **Simulator更新。**
 * **Instruments性能分析工具。**
 * **传新的UI框架SwiftUI。**
 
@@ -182,4 +183,19 @@ Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols 
 
 之前真机网络测试只能在手机上操作，现在可以直接在**Xcode->Devices & Simulators中进行测试**。
 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/realdevicecontrol.png)
+
+可以点击真机左上角小按钮来停止测试。
+
+**总结：Xcode 11进行网络测试更方便**
+
+#### 六、Testing模块更新
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/testing.png)
+
+**Reusable across schemes**
+**Define what tests to include**
+**Specify multiple configurations**
+
+#### 七、Simulator更新
 
