@@ -94,7 +94,7 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 这部分内容笔者会尽快去尝试，然后拿出来分享给大家。除了以上的内容，还有几个问题需要我们去思考并尝试的。
 
-* SPM如何管理包依赖问题？
+* SPM如何管理包之间的依赖问题？
 * SPM如何进行包的版本控制？
 * SPM如何适配私有Swift库？
 
@@ -105,5 +105,6 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 #### 三、Source Control代码管理模块更新
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/sourcecontrol.png)
+
 
 
