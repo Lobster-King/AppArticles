@@ -88,8 +88,22 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/libraryusage.png)
 
-**适配现有工程、创建Swift Package库、二进制库**
+在Appdelegate.m中引入刚添加的Swift Package->Alamofire。发起一个GET请求，打印出返回的HTML字符串，完美运行。
 
-这部分内容会在其他Session进行分享，敬请期待。
+**适配现有工程、创建Swift Package库、二进制库等等**
+
+这部分内容笔者会尽快去尝试，然后拿出来分享给大家。除了以上的内容，还有几个问题需要我们去思考并尝试的。
+
+* SPM如何管理包依赖问题？
+* SPM如何进行包的版本控制？
+* SPM如何适配私有Swift库？
+
+**总结：SPM属于Xcode第一个自产自销的包管理工具（很难想象之前没有Cocoapods、没有Carthage我们iOS开发者是怎么活过来的😅）。SPM的出现具有划时代的意义，体现了Apple致力于完善Swift生态的坚定决心。**
+
+
+
+#### 三、Source Control代码管理模块更新
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/sourcecontrol.png)
 
 
