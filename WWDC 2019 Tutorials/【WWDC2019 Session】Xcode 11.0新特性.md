@@ -62,15 +62,34 @@ Xcode 11主要包含如下新特性：
 
 #### 二、Swift包管理工具（SPM）
 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/swiftpackagemanager.png)
+
 Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧尝试了一下SPM。
 
 **SPM入口**
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/spmentrance.png)  
 
-用Xcode 11打开工程，点击Project，在Info、Build Setting后面多了一个Swift Packages，这就是SPM入口。
+用Xcode 11打开工程，点击Project，在Info、Build Setting后面多了一个Swift Packages选项，这就是SPM入口。
 
 点击+号，Xcode会提示你绑定一个账号： **BitBucket、GitHub、GitLab**
 
-笔者绑定的是GitHub账号，Xcode会自动列出该账号所属的
+笔者绑定的是GitHub账号，Xcode会按照时间顺序自动检索出该账号下的repositories。
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/repos.png)
+
+**添加一个repository到工程（笔者加入的是Alamofire Swift网络库）**
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/thirdlibrary.png)
+
+添加完成之后，会在文件目录的最下方出现**Swift Package Dependencies目录**
+
+**使用新加入的repository**
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/libraryusage.png)
+
+**适配现有工程、创建Swift Package库、二进制库**
+
+这部分内容会在其他Session进行分享，敬请期待。
+
 
