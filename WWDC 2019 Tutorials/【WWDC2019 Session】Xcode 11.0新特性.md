@@ -106,5 +106,9 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/sourcecontrol.png)
 
+在Xcode 10以前，Xcode Git GUI工具不支持stash、cherry-pick命令，在Xcode 11中加入了这两项功能。
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/stashcherry-pick.png)
+
 
 
