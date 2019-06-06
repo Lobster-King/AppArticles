@@ -147,15 +147,24 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 #### 四、设计工具
 
+**暗黑模式切换操作区**
+
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/storyboardtoolbar.png)
 
-新增暗黑模式切换操作区（Light Style/Dark Style）。
-
-**前方高能预警！！！Symbols来了**
+**Symbols（另类Icon Font）**
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/symbols.png)
 
 Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols Configuration，Icon Font即视感有没有！！！
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/symbolsconfig.png)
+
+感觉Xcode 11中，不管SwiftUI还是Symbols，都跟Flutter正面刚上了啊😅。。不知接下来Xcode是不是也会提供类似于Material Design风格的控件集。官方Session中提到，Symbols会自动适配iOS 13暗黑模式（这个笔者实验了下，Icon并没有跟随模式自动切换，知道怎么设置的同志可以留言告诉我一下）。
+
+**自定义图片暗黑模式适配**
+
+
+
 
 
 
