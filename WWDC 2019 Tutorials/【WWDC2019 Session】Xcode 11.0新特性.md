@@ -27,11 +27,11 @@ Xcode 11主要包含如下新特性：
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/workflow.png)
 
-**先来看下Xcode 10右上导航的样子** 
+**Xcode 10右上导航的样子** 
 
 ![](https://github.com/Lobster-King/AppArticles/raw/master/WWDC%202019%20Tutorials/xcode10navi.png)
 
-**再看下Xcode 11导航变化**  
+**Xcode 11右上导航的变化**  
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/xcode11navi.png)
 
@@ -47,17 +47,17 @@ Xcode 11主要包含如下新特性：
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/codecompletion.png)
 
-**主要的变更总结如下：**
+**主要的变化总结如下：**
 
-* Library（代码块Snippets和图片资源预览），由花括号改成了“+”号。原先Snippets、图片预览两项功能扩展为4项：1.SwiftUI控件库。2.SwiftUI Modifiers。3. Snippets代码块。4.图片资源预览（包括后面提到的SPM中的图片资源）。5.Color选择器。
+* Library（代码块Snippets和图片资源预览），由花括号改成了“+”号。原先Snippets、图片预览两项功能扩展为4项：1.SwiftUI控件库。2.SwiftUI Modifiers。3. Snippets代码块。4.图片资源预览（包括后面提到的SPM中的图片资源、Symbols）。5.Color选择器。
 
 * Version Editor中把Authors（以作者为视角查看代码更改记录）、Logs（以提交时间为视角查看代码更改记录）移出（集成到Editor Options中），只保留Code Review（Comparison代码比对）功能。
 
 * 新增Editor Options和Add Editor功能区。其中Editor Options包含：展示/隐藏SwiftUI画布、展示/隐藏Authors视角、MiniMap等。Add Editor可以新增多个编辑窗口，终于不需要几个编辑窗口来回切换了。
 
-* 新增MiniMap功能。有了代码地图预览功能，查找代码不再繁琐。搜索代码，MiniMap也同步高亮显示。鼠标在MiniMap移动时，也会有方法高亮提示的功能。
+* 新增MiniMap功能。有了代码地图预览功能，查找代码不再繁琐。搜索代码，MiniMap也同步高亮显示。鼠标在MiniMap移动时，也会有方法高亮提示。
 
-* 其他重要功能提升。主要包括：代码补全能力提升、拖拽代码能力提升、拼写检查等。（由于时间和篇幅原因这部分功能笔者暂未实践）
+* 其他重要功能能力提升。主要包括：代码补全能力提升、拖拽代码能力提升、拼写检查等。（由于时间和篇幅原因这部分功能笔者暂未实践）
 
 **总结：从上面的更新Tips来看，Xcode正在往好的方向发展，之前饱受开发者诟病的沙雕功能也已慢慢被Apple优化。MiniMap、和Add Editor是个亮点，有了这两个重要功能加持，跟其他IDE相比起码在易用性上不落下风。**
 
@@ -122,7 +122,7 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 在Git Tab页面，会展示出当前本地Branches列表、Stash Changes列表、Tags列表、Remotes远程仓库列表。
 
-在Stash右下角会有Stash功能选择按钮（也可以在左侧右键弹出）。
+在Stash右下角会有Stash功能选择按钮（也可以在左侧Stash Changes右键弹出）。
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/stashoption.png)
 
@@ -143,7 +143,7 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/cherry-pickoption.png)
 
-**总结：Xcode Git GUI工具虽然加入了Stash、Cherry-pick功能，但对于一些业务场景远远不够，但对于基本的开发来讲已经够用了。**
+**总结：Xcode Git GUI工具虽然加入了Stash、Cherry-pick功能，但对某些版本管理需求负责的业务场景远远不够， 而对于基本的开发来讲完全够用了。**
 
 #### 四、设计工具
 
@@ -181,7 +181,7 @@ Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols 
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/realdevice.png)
 
-之前真机网络测试只能在手机上操作，现在可以直接在**Xcode->Devices & Simulators中进行测试**。
+之前真机网络测试只能在手机上操作，现在可以直接在**Xcode->Devices & Simulators**中进行测试。
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/realdevicecontrol.png)
 
@@ -194,9 +194,9 @@ Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/testing.png)
 
 * **Reusable across schemes：通过配置不同的schemes来实现复用。**
-* **Define what tests to include：自定义测试所包含内容。**
+* **Define what tests to include：自定义测试所包含的内容。**
 * **Specify multiple configurations：支持多种配置来进行白盒测试。**
-* **支持iPad App for mac以及SwiftUI的测试。**
+* **支持iPad App for Mac以及SwiftUI的测试。**
 
 
 Testing加入了Test Server的模块，用来把测试用例一次性运行在不同的平台上（iPhone、iPad、Mac App）。
@@ -221,11 +221,28 @@ Testing加入了Test Server的模块，用来把测试用例一次性运行在�
 * CPU占用率减少至少90%。
 * 热启动至少提速2倍以上。
 
-**总结：Watch Simulator独立出来，可以预见Apple对于可穿戴设备的重视程度，除此之外Apple Wacth还会有自己独立的Watch App Store。另外Simulator利用Metal重构，其在性能上的表现确实让人眼前一亮。是不是要开始Metal框架的学习了呢？**
+**总结：Watch Simulator独立出来，可以预见Apple对于可穿戴设备的重视程度，除此之外Apple Wacth还会有自己独立的Watch App Store。另外Simulator利用Metal重构，其在性能上的表现确实让人眼前一亮。是不是要开始Metal框架的学习了呢？😅**
 
 #### 八、Instruments性能分析工具
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/instruments.png)
 
-* ****
+**增强分类信息展示**
 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/category.png)
+
+**新增SwiftUI Instrument模版**
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/swiftuitemplate.png)
+
+**增强Metal System Trace模版数据分析性能（数据分析速度提高10倍以上）**
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/metaltemplate.png)
+
+#### 九、传新的UI框架SwiftUI
+
+两个字：🐂🍺
+
+后续会继续出一些关于SwiftUI的相关分享。
+
+**文章首发GitHub [https://github.com/Lobster-King/AppArticles](https://github.com/Lobster-King/AppArticles)**
