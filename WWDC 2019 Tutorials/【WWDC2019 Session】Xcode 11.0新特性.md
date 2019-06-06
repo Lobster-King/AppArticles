@@ -1,11 +1,11 @@
 ### 写在前面
 **Apple WWDC 2019** 正如火如荼的进行着。按照WWDC计划，美国时间从Tuesday到Friday都会有各种Session分享（实在干货）。所有Session相关的Video、PPT都将陆续在 **[WWDC2019官网](https://developer.apple.com/wwdc19/schedule/#!/)** 放出。
 
-撸主会根据Session Topic与实际工作的相关性并结合实际操作，陆续将Session内容第一时间分享给大家。**因Beta版本的不稳定以及操作姿势的不同，可能会导致大家实操的结果与文中有出入，所以有问题请大家及时反馈。**
+撸主会根据Session Topic与实际工作的相关性并结合实际操作，陆续将Session内容第一时间分享给大家。
 
 进入正题，本文分享的是Xcode 11新特性。  
 
->**PS：Beta版Xcode 11非常不稳定，经常闪退，各位在实操的时候注意稳定情绪。WTF😠!!!**
+>**PS：1.本文含有大量图片，主要是笔者实操的步骤截图，流量不够用的筒子们慎入！！2.Beta版Xcode 11非常不稳定，经常闪退（WTF😠!!!），各位在实操的时候注意稳定情绪。3.因Beta版本的不稳定以及操作姿势可能不同，如果大家实操的结果与文中有出入，请及时留言交流反馈。**
 
 ### Xcode 11新特性
 
@@ -18,7 +18,7 @@ Xcode 11主要包含如下新特性：
 * **Debug工具更新。**
 * **Testing模块更新。**
 * **Instruments性能分析工具。**
-* **全新的UI框架SwiftUI。**
+* **传新的UI框架SwiftUI。**
 
 下面分别介绍这些新特性。
 
@@ -58,7 +58,7 @@ Xcode 11主要包含如下新特性：
 
 * 其他重要功能提升。主要包括：代码补全能力提升、拖拽代码能力提升、拼写检查等。（由于时间和篇幅原因这部分功能笔者暂未进行实践）
 
-**从上面的更新Tips来看，Xcode正在往好的方向发展，之前饱受开发者诟病的沙雕功能也已慢慢被Apple优化。MiniMap、和Add Editor是个亮点，有了这两个重要功能加持，跟其他IDE相比起码在易用性上不落下风。**
+**总结：从上面的更新Tips来看，Xcode正在往好的方向发展，之前饱受开发者诟病的沙雕功能也已慢慢被Apple优化。MiniMap、和Add Editor是个亮点，有了这两个重要功能加持，跟其他IDE相比起码在易用性上不落下风。**
 
 #### 二、Swift包管理工具（SPM）
 
@@ -139,7 +139,7 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 ![](https://github.com/Lobster-King/AppArticles/raw/master/WWDC%202019%20Tutorials/cherry-pick.png)
 
-选择某个commit，然后cherry-pick，弹出框点击cherry-pick就会信生成一个将该commit合并到master分支，并新生成一个commit。
+选择某个commit，然后cherry-pick，弹出框点击cherry-pick就会将该commit合并到master分支，并生成一个新commit。
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/cherry-pickoption.png)
 
@@ -155,15 +155,19 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/symbols.png)
 
-Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols Configuration，Icon Font即视感有没有！！！
+在Library中，可以选择Symbols元素。
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/symbolsconfig.png)
 
-感觉Xcode 11中，不管SwiftUI还是Symbols，都跟Flutter正面刚上了啊😅。。不知接下来Xcode是不是也会提供类似于Material Design风格的控件集。官方Session中提到，Symbols会自动适配iOS 13暗黑模式（这个笔者实验了下，Icon并没有跟随模式自动切换，知道怎么设置的同志可以留言告诉我一下）。
+Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols Configuration，Icon Font即视感有没有！！！
 
 **自定义图片暗黑模式适配**
 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/customimage.png)
 
+在Asset Catalog中添加自定义图片，然后选择Appearances，然后添加暗黑模式下的图片即可。
+
+**总结：感觉Xcode 11中，不管SwiftUI还是Symbols，都跟Flutter正面刚上了啊😅。。不知接下来Xcode是不是也会提供类似于Material Design风格的控件集。官方Session中提到，Symbols会自动适配iOS 13暗黑模式（这个笔者实验了下，Icon并没有跟随模式自动切换，知道怎么设置的同志可以留言告诉我一下）。**
 
 
 
