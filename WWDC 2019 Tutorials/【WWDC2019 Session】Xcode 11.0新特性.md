@@ -151,8 +151,11 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 新增暗黑模式切换操作区（Light Style/Dark Style）。
 
-**前方高能预警！！！**
+**前方高能预警！！！Symbols来了**
 
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/symbols.png)
+
+Xcode 11竟然也有自己的标准图片Icon库了，而且可以进行Symbols Configuration，Icon Font即视感有没有！！！
 
 
 
