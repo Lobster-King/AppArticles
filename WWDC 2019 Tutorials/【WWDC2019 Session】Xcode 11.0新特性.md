@@ -14,7 +14,7 @@ Xcode 11主要包含如下新特性：
 * **Xcode工作流更新。**
 * **Swift包管理工具（Xcode终于有了自己的包管理工具了😅）。**
 * **Source Control代码管理模块更新。**
-* **StoryBoard设计工具。**
+* **设计工具。**
 * **Debug工具更新。**
 * **Testing模块更新。**
 * **Instruments性能分析工具。**
@@ -145,7 +145,14 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 **总结：Xcode Git GUI工具虽然加入了Stash、Cherry-pick功能，但对于一些业务场景远远不够，但对于基本的开发来讲已经够用了。**
 
-#### 四、StoryBoard设计工具
+#### 四、设计工具
+
+![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/storyboardtoolbar.png)
+
+新增暗黑模式切换操作区（Light Style/Dark Style）。
+
+**前方高能预警！！！**
+
 
 
 
