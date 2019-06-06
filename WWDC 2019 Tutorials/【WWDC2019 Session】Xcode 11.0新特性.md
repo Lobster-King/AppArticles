@@ -135,5 +135,9 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 
 **Cherry-Pick**
 
+假设有两个分支A和B，进行合并分支的时候，你并不想把B的所有commit合并到A，而是想把单个commit合并过来，这时候就得用到git cherry-pick命令了。
+
+![](https://github.com/Lobster-King/AppArticles/raw/master/WWDC%202019%20Tutorials/cherry-pick.png)
+
 
 
