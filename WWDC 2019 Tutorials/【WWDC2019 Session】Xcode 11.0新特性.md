@@ -12,7 +12,7 @@
 Xcode 11主要包含如下新特性：
 
 * **Xcode工作流更新。**
-* **Swift包管理工具（Xcode终于有了自己的包管理工具了😅）。**
+* **Swift包管理工具（Xcode终于有了自己的可视化包管理工具了😅）。**
 * **Source Control代码管理模块更新。**
 * **设计工具。**
 * **Debug工具更新。**
@@ -65,7 +65,7 @@ Xcode 11主要包含如下新特性：
 
 ![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WWDC%202019%20Tutorials/swiftpackagemanager.png)
 
-Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧尝试了一下SPM。
+Xcode终于有了自己的可视化包管理工具了！！！喜大普奔，笔者赶紧尝试了一下SPM可视化工具。
 
 **SPM入口**
 
@@ -99,7 +99,7 @@ Xcode终于有了自己的包管理工具了！！！喜大普奔，笔者赶紧
 * SPM如何进行包的版本控制？
 * SPM如何适配私有Swift库？
 
-**总结：SPM属于Xcode第一个自产自销的包管理工具（是不是可以理直气壮的跟Cocoapods、Carthage说拜拜了？可能需要很长的路要走。。。😅）。SPM的出现具有划时代的意义，体现了Apple致力于完善Swift生态的坚定决心。**
+**总结：跟SPM命令行工具相比可视化包管理工具更加简单直观。（是不是可以理直气壮的跟Cocoapods、Carthage说拜拜了？可能需要很长的路要走。。。😅）。SPM的出现具有划时代的意义，体现了Apple致力于完善Swift生态的坚定决心。**
 
 
 #### 三、Source Control代码管理模块更新
