@@ -19,5 +19,3 @@ You can contact me in the following ways
 
 * PRs or Issues.
 * Email :[zhiwei.geek@gmail.com](mailto:zhiwei.geek@gmail.com)
-* WeChat:  
-![](https://raw.githubusercontent.com/Lobster-King/AppArticles/master/WeChat.png)
